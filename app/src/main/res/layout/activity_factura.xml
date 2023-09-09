@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".facturaActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="FACTURA DE VENTA" />
+
+    <EditText
+        android:id="@+id/etcodigo"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:hint="Codigo de factura"
+        android:layout_marginTop="10dp"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/etfecha"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:enabled="false"
+        android:layout_gravity="center"
+        android:textSize="20dp"
+        android:hint="Fecha factura"
+        android:inputType="date" />
+
+    <Button
+        android:id="@+id/btbuscarfactura"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:onClick="ConsultarFactura"
+        android:text="Buscar" />
+
+    <TextView
+        android:id="@+id/tvtitulo1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="CLIENTE" />
+
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/etidentificacionF"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="identificacion"
+            android:enabled="false"
+            android:gravity="center"
+            android:inputType="number" />
+
+        <Button
+            android:id="@+id/btbuscarcliente"
+            android:layout_width="140dp"
+            android:enabled="false"
+            android:layout_height="wrap_content"
+            android:onClick="ConsultarCliente"
+            android:text="Consultar" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etnombreF"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:gravity="center"
+            android:hint="nombre"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/ettelefonoF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:gravity="center"
+            android:hint="telefono"
+            android:inputType="number" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:layout_marginTop="15dp"
+        android:text="VEHICULO" />
+
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:padding="5dp">
+
+        <EditText
+            android:id="@+id/etplacaF"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="placa"
+            android:gravity="center"
+            android:enabled="false"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btbuscarvehiculo"
+            android:layout_width="140dp"
+            android:enabled="false"
+            android:layout_height="wrap_content"
+            android:onClick="ConsultarVehiculo"
+            android:text="Consultar" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etmarcaF"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:gravity="center"
+            android:hint="marca"
+            android:inputType="text" />
+
+        <EditText
+            android:id="@+id/etvalorF"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:enabled="false"
+            android:gravity="center"
+            android:hint="valor"
+            android:inputType="number" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/cbactivoF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:enabled="false"
+        android:text="Activo" />
+    <LinearLayout
+        android:layout_width="370dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="7dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btguardar"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:layout_weight="1"
+            android:enabled="false"
+            android:onClick="GuardarVenta"
+            android:text="Guardar"
+            android:textSize="25dp" />
+
+        <Button
+            android:id="@+id/btanular"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:textSize="25dp"
+            android:onClick="AnularFactura"
+            android:enabled="false"
+            android:layout_weight="1"
+            android:text="Anular" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="370dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="7dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btcancelar"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:onClick="Cancelar"
+            android:layout_weight="1"
+            android:text="Cancelar"
+            android:textSize="25dp" />
+
+        <Button
+            android:id="@+id/btregresar"
+            android:layout_width="100dp"
+            android:layout_height="55dp"
+            android:onClick="Regresar"
+            android:layout_weight="1"
+            android:text="Regresar"
+            android:textSize="25dp" />
+    </LinearLayout>
+
+</LinearLayout>
