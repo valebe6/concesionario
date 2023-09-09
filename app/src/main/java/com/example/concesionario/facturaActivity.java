@@ -76,7 +76,7 @@ public class facturaActivity extends AppCompatActivity {
                     Toast.makeText(this, "El registro existe pero esta anulado", Toast.LENGTH_SHORT).show();
                 }
             }else {
-                Toast.makeText(this, "Factura no encontrada, registre una nueva.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Factura no existente", Toast.LENGTH_SHORT).show();
                 jetfecha.setEnabled(true);
                 ContentValues fila=new ContentValues();
                 fila.put("code_factura",codigo);
@@ -98,7 +98,6 @@ public class facturaActivity extends AppCompatActivity {
         SQLiteDatabase sqLiteDatabase = admin.getReadableDatabase();
         Cursor registro1 = sqLiteDatabase.rawQuery("select * from TblCliente where Ident_cliente='"+identificacion+"'",null);
         if(registro1.moveToNext()){
-            sw=true;
             jetnombre.setText(registro1.getString(1));
             jettelefono.setText(registro1.getString(3));
             jetplaca.setEnabled(true);
@@ -149,6 +148,9 @@ public class facturaActivity extends AppCompatActivity {
             }
             if (respuesta > 0){
                 Toast.makeText(this,"Venta exitosa",Toast.LENGTH_SHORT).show();
+                ContentValues filaV=new ContentValues();
+                filaV.put("Activo","no");
+                respuesta=sqLiteDatabase.update("TblVehiculo",filaV,"Placa='"+placa+"'",null);
                 Limpiar_campos();
             }else{
                 Toast.makeText(this,"Error guardando registro",Toast.LENGTH_SHORT).show();
@@ -160,13 +162,15 @@ public class facturaActivity extends AppCompatActivity {
         }
     }
     public void AnularFactura(View view){
-        codigo=jetcodigo.getText().toString();
         SQLiteDatabase sqLiteDatabase=admin.getWritableDatabase();
         ContentValues fila=new ContentValues();
+        fila.put("Activo","no");
         respuesta=sqLiteDatabase.update("Tblfactura",fila,"code_factura='"+codigo+"'",null);
         if (respuesta > 0){
             Toast.makeText(this,"Factura anulada", Toast.LENGTH_SHORT).show();
-            fila.put("Activo","no");
+            ContentValues filaV=new ContentValues();
+            filaV.put("Activo","si");
+            respuesta=sqLiteDatabase.update("TblVehiculo",filaV,"Placa='"+placa+"'",null);
             Limpiar_campos();
         }else{
             Toast.makeText(this,"Error anulando registro", Toast.LENGTH_SHORT).show();
@@ -184,6 +188,7 @@ public class facturaActivity extends AppCompatActivity {
     }
 
     private  void  Limpiar_campos(){
+        jetcodigo.setEnabled(true);
         jetcodigo.setText("");
         jetfecha.setText("");
         jetidentificacion.setText("");
